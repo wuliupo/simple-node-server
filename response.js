@@ -37,7 +37,7 @@ module.exports.rDir = function (res, url, file) {
     // 请求的目录
     res.setHeader('Content-Type', mime.html);
     const folder = url ? `/${url}/` : '/';
-    const title = `Simple Node Server: ${url}`;
+    const title = `Simple Node Server: ${folder}`;
     let rst = `<!doctype html>
 <html lang="zh-CN">
     <head>
