@@ -14,6 +14,8 @@ module.exports = {
     tiff: 'image/tiff',
     txt: 'text/plain; charset=utf-8',
     md: 'text/plain; charset=utf-8',
+    sh: 'text/plain; charset=utf-8',
+    bat: 'text/plain; charset=utf-8',
     wav: 'audio/x-wav',
     wma: 'audio/x-ms-wma',
     wmv: 'video/x-ms-wmv',
