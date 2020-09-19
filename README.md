@@ -18,3 +18,6 @@ b. http api: http://nodejs.cn/api/http.html#http_class_http_server
 9. 性能（文件比较大）
 10. 跨域（对外提供 API，jsonp等）
 11. 参数配置（cli）
+12. 本地调试
+13. 访问日志
+14. 代理第三方服务 proxy
