@@ -1,3 +1,6 @@
+/**
+ * 应用开关，配置项
+ */
 module.exports = {
     baseDir: process.env.baseDir || './dist', // 静态资源目录
     defaultMime: 'application/octet-stream', // 默认类型，文件下载的数据流

@@ -29,21 +29,21 @@ http.createServer((req, res) => {
         return;
     }
 
-    // 目录是，查找索引文件是否存在
+    // 目录时，查找索引文件是否存在, nginx: index index.html index.php
     if (typeof config.indexFiles === 'string') {
         config.indexFiles = [config.indexFiles];
     }
-    const indexExist = config.indexFiles.find(item => fs.existsSync(path.join(file, item)));
+    const indexExist = config.indexFiles.find(item => item && fs.existsSync(path.join(file, item)));
     if (indexExist) {
         rFile(res, path.join(file, indexExist));
         return;
     }
 
+    // 是否显示目录索引, nginx: autoindex on
     if (!config.listDir) {
         r404(res);
         return;
     }
-
     // 遍历本地目录并输出
     rDir(res, url, file);
 

@@ -3,11 +3,19 @@ const mime = require('./mime');
 const { getMime } = require('./util');
 const config = require('./config');
 
-function r500 (res) {
+/**
+ * 服务器错误
+ * @param {*} res
+ */
+function r500(res) {
     res.writeHead(500, { 'Content-Type': mime.html });
     res.end('<h1>500 Server Error!</h1>');
 }
 
+/**
+ * 资源不存在
+ * @param {*} res
+ */
 module.exports.r404 = function (res) {
     res.writeHead(404, { 'Content-Type': mime.html });
     res.end('<h1>404 Not Found!</h1>');
@@ -15,12 +23,22 @@ module.exports.r404 = function (res) {
 
 module.exports.r500 = r500;
 
+/**
+ * 页面重定向
+ * @param {*} res
+ * @param {*} url
+ */
 module.exports.r302 = function (res, url) {
     res.statusCode = 302;
     res.setHeader('Location', url);
     res.end();
 };
 
+/**
+ * 返回文件内容
+ * @param {*} res
+ * @param {*} file
+ */
 module.exports.rFile = function (res, file) {
     // 设置请求的返回头 type
     res.setHeader('Content-Type', mime[getMime(file)] || config.defaultMime || mime.unknown);
@@ -33,6 +51,12 @@ module.exports.rFile = function (res, file) {
         .pipe(res);
 };
 
+/**
+ * 遍历目录并输出
+ * @param {*} res
+ * @param {*} url
+ * @param {*} file
+ */
 module.exports.rDir = function (res, url, file) {
     // 请求的目录
     res.setHeader('Content-Type', mime.html);
@@ -52,7 +76,10 @@ module.exports.rDir = function (res, url, file) {
         rst += `<li><a href="${folder}..">..</a></li>`;
     }
     // 遍历所有子目录，并输出出来
-    rst += fs.readdirSync(file, {}).map((item) => `<li><a href="${folder}${item}">${item}</a></li>`).join('\n');
+    rst += fs
+        .readdirSync(file, {})
+        .map((item) => `<li><a href="${folder}${item}">${item}</a></li>`)
+        .join('\n');
     rst += '\n</ol>';
     res.end(rst);
-}
+};

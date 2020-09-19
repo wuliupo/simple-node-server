@@ -1,3 +1,6 @@
+/**
+ * 常用文件类型
+ */
 module.exports = {
     css: 'text/css; charset=utf-8',
     gif: 'image/gif',
