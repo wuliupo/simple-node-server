@@ -18,4 +18,5 @@ module.exports = {
     wma: 'audio/x-ms-wma',
     wmv: 'video/x-ms-wmv',
     xml: 'text/xml; charset=utf-8',
+    unknown: 'application/octet-stream',
 };
