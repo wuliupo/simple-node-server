@@ -23,19 +23,24 @@ http.createServer((req, res) => {
         return;
     }
 
-    // 本地已经存在的目录
+    // 本地已经存在的文件
     if (fs.statSync(file).isFile()) {
         rFile(res, file);
         return;
     }
 
-    // 索引文件
+    // 目录是，查找索引文件是否存在
     if (typeof config.indexFiles === 'string') {
         config.indexFiles = [config.indexFiles];
     }
     const indexExist = config.indexFiles.find(item => fs.existsSync(path.join(file, item)));
     if (indexExist) {
         rFile(res, path.join(file, indexExist));
+        return;
+    }
+
+    if (!config.listDir) {
+        r404(res);
         return;
     }
 

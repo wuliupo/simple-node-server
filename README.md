@@ -5,6 +5,8 @@
 a. node.js 底层 api：const fs = require('fs');  http://nodejs.cn/api/fs.html 根据请求分两种：文件 + 目录
 b. http api: http://nodejs.cn/api/http.html#http_class_http_server
 
+## [配置项](./config.js)
+
 ## 功能点
 
 1. [x] 文件内容查看
