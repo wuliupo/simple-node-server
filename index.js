@@ -10,7 +10,7 @@ const { r302, r404, rFile, rDir } = require('./response');
 http.createServer((req, res) => {
     // 根据请求 url，转换为本地磁盘路径
     const url = getFile(req.url);
-    let file = path.resolve(__dirname, config.baseDir, url);
+    let file = path.resolve(config.baseDir, url);
 
     // 文件不存在
     if (!fs.existsSync(file)) {
